@@ -84,3 +84,4 @@ run_analysis <- function(context) {
   
   message("Heatmap generation sequence finalized.")
 }
+print("Script loaded successfully. Awaiting execution.")
