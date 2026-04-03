@@ -11,8 +11,8 @@ run_analysis <- function(context) {
   print(context)
   # --- PATH RESOLUTION ---
   # These come from the 'mnts' list defined in api.R
-  input_folderpath      <- context$mounts$input
-  output_directory_path <- context$mounts$output
+  input_folderpath      <- context$input
+  output_directory_path <- context$output
   
   message(paste("Starting Heatmap Generation. Input:", input_folderpath))
   
