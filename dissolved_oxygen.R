@@ -7,7 +7,7 @@ library(lubridate)
 # The API requires this specific function name to execute
 run_analysis <- function(context) {
 
-  print("Context received:")
+  print("Dissolved Oxygen Plot: Input Parameters received:")
   print(context)
   # --- PATH RESOLUTION ---
   # These come from the 'mnts' list defined in api.R
@@ -19,7 +19,7 @@ run_analysis <- function(context) {
   # --- FILE DISCOVERY ---
   all_files <- list.files(
     path = input_folderpath,
-    pattern = "ERDDAP_fishbot_realtime_dissolved-oxygen-count_.*\\.csv$",
+    pattern = "*\\.csv$",
     full.names = TRUE,
     recursive = TRUE
   )
