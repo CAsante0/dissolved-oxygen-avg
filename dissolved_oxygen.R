@@ -14,7 +14,11 @@ run_analysis <- function(args) {
   input_folderpath      <- args$mnt1
   output_directory_path <- args$mnt3
   #supplementary_folderpath <- args$mnt2
-  #x_input_folderpath <- args$mnt4
+
+  # OBTAINING USER DEFINED VARIABLES 
+  #custom_variable_list <- args$custom_args
+  #var <- custom_variable_list[['threshold']]
+
   
   message(paste("Starting Heatmap Generation. Input:", input_folderpath))
   
