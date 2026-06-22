@@ -17,7 +17,7 @@ run_analysis <- function(args) {
 
   # OBTAINING USER DEFINED VARIABLES 
   #custom_variable_list <- args$custom_args
-  #var <- custom_variable_list[['threshold']]
+  #var <- custom_variable_list[['param_1']]
 
   
   message(paste("Starting Heatmap Generation. Input:", input_folderpath))
