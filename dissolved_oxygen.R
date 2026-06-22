@@ -5,14 +5,16 @@ library(jsonlite)
 library(lubridate)
 
 # The API requires this specific function name to execute
-run_analysis <- function(context) {
+run_analysis <- function(args) {
 
   print("Dissolved Oxygen Plot: Input Parameters received:")
   print(context)
   # --- PATH RESOLUTION ---
   # These come from the 'mnts' list defined in api.R
-  input_folderpath      <- context$input
-  output_directory_path <- context$output
+  input_folderpath      <- args$mnt1
+  output_directory_path <- args$mnt3
+  #supplementary_folderpath <- args$mnt2
+  #x_input_folderpath <- args$mnt4
   
   message(paste("Starting Heatmap Generation. Input:", input_folderpath))
   
@@ -74,7 +76,7 @@ run_analysis <- function(context) {
       scale_fill_viridis_c(option = "mako") +
       labs(
         title = paste("Average Dissolved Oxygen:", current_month),
-        subtitle = paste("Job ID:", context$job_id),
+        subtitle = paste("Job ID:", args$job_id),
         x = "Longitude", y = "Latitude"
       ) +
       theme_minimal()

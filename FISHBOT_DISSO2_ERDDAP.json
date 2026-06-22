@@ -1,0 +1,47 @@
+[
+    {
+        "FISHBOT" : [
+                        {
+                            "workflow" : {
+                                    "workflow_name" : "FISHBOT_DISSOLVED-O2",
+                                    "steps" : ["import_dataset", "transform_dataset"],
+                                    "source_type" : "erddap"
+                            },
+                            "import_dataset" : {
+                                    "batch_import" : true,
+                                    "mnt1_import" : "/FISHBOT_DEMO/SOURCE/NRT/",
+                                    "one_variable_per_file" : false,
+                                    "dataset_id" :  "fishbot_realtime",
+                                    "schedule" : ["daily"],
+                                    "filename_prefix" : "ERDDAP",
+                                    "base_url": "https://erddap.ondeckdata.com/",
+                                    "output_format" : "csv",
+                                    "dap_type" : "tabledap",
+                                    "dataset_variables" : ["dissolved_oxygen_min", "dissolved_oxygen_max", "dissolved_oxygen_std", "dissolved_oxygen_count","temperature"],
+                                    "dimensions" : ["time", "latitude", "longitude"],
+                                    "time_range" : ["1993-01-01", "2024-04-01"],
+                                    "latitude" : [22.5, 48.4],
+                                    "longitude" : [-82.5, -51.5]
+                                },
+                            "transform_dataset" : {
+                                    "mnt1_import" : "/FISHBOT/SOURCE/NRT/DISS02/",
+                                    "mnt3_processed" : "/FISHBOT/PRODUCT/NRT/monthly/",
+                                    "template_application_location_type" : "r-container", 
+                                    "template_app_entrypoint" : "dissolved_oxygen.R",
+                                    "template_application_repo" : null,
+                                    "github_repo_url" : "https://github.com/CAsante0/dissolved-oxygen-avg",
+                                    "template_app_arguments":
+                                        { 
+                                            "param1_name" : "argument_value", 
+                                            "param2_name" : "mnt1_value"
+                                        }
+                                }
+
+                        }
+        ]
+    }
+]
+                           
+                           
+                           
+                           
