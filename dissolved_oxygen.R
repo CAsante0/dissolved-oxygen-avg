@@ -19,7 +19,7 @@ run_analysis <- function(context) {
   # --- FILE DISCOVERY ---
   all_files <- list.files(
     path = input_folderpath,
-    pattern = "*\\.csv$",
+    pattern = "\\.csv$",
     full.names = TRUE,
     recursive = TRUE
   )
