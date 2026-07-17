@@ -48,14 +48,29 @@ run_analysis <- function(context) {
     }
   }
 
-  # --- STEP 3: ROBUST FILE DISCOVERY ---
+# --- STEP 3: ROBUST FILE DISCOVERY ---
   message("[STEP 3/6] Scanning input directory for CSV files...")
   
-  # Let's see what is actually inside the directory root first to debug visibility
-  root_contents <- list.files(input_folderpath, max.depth = 1)
+  # FIXED: Removed 'max.depth = 1' and replaced with standard non-recursive list
+  root_contents <- list.files(input_folderpath, recursive = FALSE)
   message(paste("-> Total items found in root of input mount:", length(root_contents)))
   if (length(root_contents) > 0) {
     message(paste("-> Sample items in root:", paste(head(root_contents, 5), collapse = ", ")))
+  }
+
+  # Executing ultra-robust discovery: 
+  all_files <- list.files(
+    path = input_folderpath,
+    pattern = "\\.csv$",
+    full.names = TRUE,
+    recursive = TRUE,
+    ignore.case = TRUE
+  )
+  
+  message(paste("-> Total matching CSV files discovered:", length(all_files)))
+  
+  if (length(all_files) == 0) {
+    stop(paste("[FATAL] Zero CSV files were found matching '\\.csv$' (case-insensitive) inside:", input_folderpath))
   }
 
   # Executing ultra-robust discovery: 
